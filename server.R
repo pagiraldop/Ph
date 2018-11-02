@@ -2,7 +2,7 @@ library(shiny)
 shinyServer(function(input, output,session) {
   
   
-  plot.htest <- function(test, col='gray68', cex=0.8, shade.col='gray68', ...)
+  plot.htest <- function(test, col='royalblue', cex=0.8, shade.col='royalblue', ...)
   {
     # Z test
     if (test$method %in% c('One Sample z-test',
@@ -585,12 +585,12 @@ shinyServer(function(input, output,session) {
       output$resul1 <-renderText({
         phmedia <- z_test(meanx=input$media, nx=input$nx, sigma2=input$varT, 
                           alternative=input$h0m,mu=input$mu0m,conf.level=input$alfa)
-        conclusiÃ³n <- ifelse(phmedia$p.value < 0.05, 'es rechazada',
+        conclusión <- ifelse(phmedia$p.value < 0.05, 'es rechazada',
                              'no es rechazada')
-        paste0('El estadÃ­stico de prueba es zo=', round(phmedia$statistic, 4),
-               ' con un valor-P de ', round(phmedia$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃ³tesis nula ', conclusiÃ³n, 
+        paste0('El estadístico de prueba es zo=', round(phmedia$statistic, 4),
+               ' con un valor-P de ', round(phmedia$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                ' (a un nivel de significancia del 5%).')
       })
       
@@ -621,12 +621,12 @@ shinyServer(function(input, output,session) {
       output$resul1 <-renderText({
         phmedian <- t_test(meanx=input$media, varx=input$varZ, nx=input$nx, 
                            alternative=input$h0m,mu=input$mu0m,conf.level=input$alfa)
-        conclusiÃ³n <- ifelse(phmedian$p.value < 0.05, 'es rechazada',
+        conclusión <- ifelse(phmedian$p.value < 0.05, 'es rechazada',
                              'no es rechazada')
-        paste0('El estadÃ­stico de prueba es to=', round(phmedian$statistic, 4),
-               ' con un valor-P de ', round(phmedian$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃÂ³tesis nula ', conclusiÃ³n, 
+        paste0('El estadístico de prueba es to=', round(phmedian$statistic, 4),
+               ' con un valor-P de ', round(phmedian$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                ' (a un nivel de significancia del 5%).')
       })
       
@@ -662,12 +662,12 @@ shinyServer(function(input, output,session) {
         
         phvari <- var_test(varx =input$varianza , nx=input$nxv, 
                            alternative=input$h0v, null.value = input$sigma0,conf.level=input$alfa2)
-        conclusiÃ³n <- ifelse(phvari$p.value < 0.05, 'es rechazada',
+        conclusión <- ifelse(phvari$p.value < 0.05, 'es rechazada',
                              'no es rechazada')
-        paste0('El estadÃ­stico de prueba es xo=', round(phvari$statistic, 4),
-               ' con un valor-P de ', round(phvari$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃ³tesis nula ', conclusiÃ³n, 
+        paste0('El estadístico de prueba es xo=', round(phvari$statistic, 4),
+               ' con un valor-P de ', round(phvari$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                ' (a un nivel de significancia del 5%).')
       })
       
@@ -704,12 +704,12 @@ shinyServer(function(input, output,session) {
         output$resul1 <-renderText({
           phdife <- t_test(meanx=input$mediap1, meany=input$mediap2,varx=input$varp22,vary=input$varp32, nx=input$nxv1, 
                            ny=input$nxv2,alternative=input$h0v,mu=input$delta0,conf.level=input$alfa3, var.equal = input$iguales)
-          conclusiÃ³n <- ifelse(phdife$p.value < 0.05, 'es rechazada',
+          conclusión <- ifelse(phdife$p.value < 0.05, 'es rechazada',
                                'no es rechazada')
-          paste0('El estadÃ­stico de prueba es to=', round(phdife$statistic, 4),
-                 ' con un valor-P de ', round(phdife$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃ³tesis nula ', conclusiÃ³n, 
+          paste0('El estadístico de prueba es to=', round(phdife$statistic, 4),
+                 ' con un valor-P de ', round(phdife$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                  ' (a un nivel de significancia del 5%).')
         })
         
@@ -745,12 +745,12 @@ shinyServer(function(input, output,session) {
       output$resul1 <-renderText({
         phcoci <- var_test(varx=input$varc1,vary=input$varc2, nx=input$nxvar, 
                            ny=input$nxvar2,alternative=input$pi,conf.level=input$alfa4)
-        conclusiÃ³n <- ifelse(phcoci$p.value < 0.05, 'es rechazada',
+        conclusión <- ifelse(phcoci$p.value < 0.05, 'es rechazada',
                              'no es rechazada')
-        paste0('El estadÃ­stico de prueba es Fo=', round(phcoci$statistic, 4),
-               ' con un valor-P de ', round(phcoci$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃ³tesis nula ', conclusiÃ³n, 
+        paste0('El estadístico de prueba es Fo=', round(phcoci$statistic, 4),
+               ' con un valor-P de ', round(phcoci$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                ' (a un nivel de significancia del 5%).')
       })
       
@@ -784,12 +784,42 @@ shinyServer(function(input, output,session) {
       output$resul1 <-renderText({
         phprop <- prop.test(x=c(input$primpobla, input$segpobla),n=c(input$primnpobla, input$segnpobla), p=c(input$pp, input$ps), 
                            alternative=input$P0,conf.level=input$alfa5, correct=input$headerpp)
-        conclusiÃ³n <- ifelse(phprop$p.value < 0.05, 'es rechazada',
+        conclusión <- ifelse(phprop$p.value < 0.05, 'es rechazada',
                               'no es rechazada')
-        paste0('El estadÃ­stico de prueba es Xo=', round(phprop$statistic, 4),
-               ' con un valor-P de ', round(phprop$p.value, 4), ', por esta razÃ³n
-               se puede concluir que, dada la informaciÃ³n de la muestra, 
-               la hipÃ³tesis nula ', conclusiÃ³n, 
+        paste0('El estadístico de prueba es Xo=', round(phprop$statistic, 4),
+               ' con un valor-P de ', round(phprop$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
+               ' (a un nivel de significancia del 5%).')
+      })
+      
+      output$resul2 <- renderText({})
+    }
+    
+    if(input$Prueba == "PH. para proporciones"){
+      
+      
+      x <- input$propor
+      n <- input$proporn
+      p <- input$ppropor
+      alternative <- input$proporP0
+      conf.level <- input$alfa6
+      correct <- input$headerpropor
+      
+      ph6 <- prop.test(x=input$propor, input$segpobla,n=input$proporn, p=input$ppropor, 
+                       alternative=input$proporP0,conf.level=input$alfa6, correct=input$headerpropor)
+      
+      plot.htest(ph6)
+      
+      output$resul1 <-renderText({
+        phprop <- prop.test(x=input$propor, input$segpobla,n=input$proporn, p=input$ppropor, 
+                            alternative=input$proporP0,conf.level=input$alfa6, correct=input$headerpropor)
+        conclusión <- ifelse(phprop$p.value < 0.05, 'es rechazada',
+                              'no es rechazada')
+        paste0('El estadístico de prueba es Xo=', round(phprop$statistic, 4),
+               ' con un valor-P de ', round(phprop$p.value, 4), ', por esta razón
+               se puede concluir que, dada la información de la muestra, 
+               la hipótesis nula ', conclusión, 
                ' (a un nivel de significancia del 5%).')
       })
       
@@ -797,7 +827,5 @@ shinyServer(function(input, output,session) {
     }
     
     })#miplot
-  
-  output$unal <- renderPlot(img(src="unal3.png", height = 60, width = 120))
   })
   

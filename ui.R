@@ -1,11 +1,14 @@
 library(shiny)
 library(markdown)
 shinyUI(fluidPage(
-  titlePanel("Pruebas de Hipótesis"),
-  h5(p(em("Esta aplicación realiza pruebas de hipótesis para datos resumidos")),
+  titlePanel("Pruebas de hipótesis para datos resumidos"),
+  h5(p(em("Es decir, cuando se tienen los estadísticos muestrales")),
      align="left"),
   sidebarLayout(
     sidebarPanel(
+      h6('Las cantidades que por defecto aparecen abajo corresponden a datos
+         tomados de ejemplos de textos en estadística'),
+      
       selectInput(inputId = 'Prueba',
                   label = "Elija la prueba que quiere realizar",
                   choices=c("PH. para la media",
@@ -33,7 +36,7 @@ shinyUI(fluidPage(
                                         
                                         numericInput(inputId="varT",
                                                      label = "Ingrese el valor de la varianza POBLACIONAL",
-                                                     value = "0.0256",
+                                                     value = "0.1",
                                                      min = 1)
                                         
                                         ),
@@ -300,7 +303,7 @@ shinyUI(fluidPage(
                                     value = "20"),
                        
                        selectInput(inputId="pi", 
-                                   label=HTML("La hipÃ³tesis nula de la prueba es Ho:
+                                   label=HTML("La hipótesis nula de la prueba es Ho:
                                               &sigma;<sup>2</sup><sub>1</sub> / 
                                               &sigma;<sup>2</sup><sub>2</sub> = 1, 
                                               elija el tipo de hipótesis alterna
@@ -327,41 +330,23 @@ shinyUI(fluidPage(
       conditionalPanel(condition="input.Prueba =='PH. para proporciones'",
                        
                        
-                       fileInput(inputId='file1',
-                                 label="Use el boton siguiente para cargar su base de datos.",
-                                 accept = c(
-                                   'text/csv',
-                                   'text/comma-separated-values',
-                                   'text/tab-separated-values',
-                                   'text/plain',
-                                   '.csv',
-                                   '.tsv'
-                                 )),
+                       numericInput(inputId="propor",
+                                    label="Ingrese el número de éxitos en la muestra",
+                                    value= 18),
                        
-                       checkboxInput(inputId='header3',
-                                     label="Tiene encabezado la base de datos?", 
-                                     value=TRUE),
+                       numericInput(inputId="proporn",
+                                    label="Ingrese el número de observaciones en la muestra",
+                                    value= 20),
                        
-                       selectInput(inputId="sep",
-                                   label = "Cual es la separaciÃ³n de los datos?", 
-                                   choices = list(Tab='\t', Comma=',',
-                                                  Semicolon=';', 'space'=' '),
-                                   selected = ';'),
+                       numericInput(inputId="ppropor",
+                                    label="Ingrese la probabilidad en que ocurre un suceso en la muestra",
+                                    max = 1,
+                                    min = 0,
+                                    value= 0.5),
                        
                        
-                       selectInput(inputId="variable1",
-                                   label="Elija la variable cuantitativa para realizar
-                                   la prueba de hipÃ³tesis.",
-                                   choices=""),
-                       
-                       numericInput(inputId='p0', 
-                                    label=HTML("Ingrese el valor de referencia
-                                               P<sub>0</sub> para probar
-                                               H<sub>0</sub>: P = P<sub>0</sub>"), 
-                                    value=0),
-                       
-                       selectInput(inputId="P0", 
-                                   label=HTML("Elija la hipÃ³tesis alternativa
+                       selectInput(inputId="proporP0", 
+                                   label=HTML("Elija la hipótesis alternativa
                           < , &ne; o >"), 
                                    choices=list("Menor" = "less", 
                                                 "Differente" = "two.sided",
@@ -369,24 +354,28 @@ shinyUI(fluidPage(
                                    selected = "two.sided"),
                        
                        
-                       sliderInput(inputId='alfa5',
+                       sliderInput(inputId='alfa6',
                                    label=HTML("Opcional: elija un nivel de confianza para 
-                construir el intervalo de confianza para la proporcion P"),
+                construir el intervalo de confianza para la diferencia de proporciones P<sub>1</sub> -
+                                               P<sub>2</sub>"),
                                    min=0.90, max=0.99,
-                                   value=0.95, step=0.01)
+                                   value=0.95, step=0.01),
                        
-                       
-                       ),
+                       selectInput(inputId='headerpropor',
+                                   label = "Desea aplicar factor de corrección",
+                                   choices = list("FALSE",
+                                                  "TRUE"),
+                                   selected = "TRUE"),
       
       conditionalPanel(condition="input.Prueba =='PH. para la diferencia de proporciones'",
 
                        
                        numericInput(inputId="primpobla",
-                                   label="Ingrese el número de sucesos en la primera muestra",
+                                   label="Ingrese el número de éxitos en la primera muestra",
                                    value= 18),
                        
                        numericInput(inputId="segpobla",
-                                    label="Ingrese el número de sucesos en la segunda muestra",
+                                    label="Ingrese el número de éxitos en la segunda muestra",
                                     value= 14),
                        
                        numericInput(inputId="primnpobla",
