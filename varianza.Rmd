@@ -1,0 +1,24 @@
+---
+title: "Prueba de hipótesis para la varianza"
+output: html_document
+---
+sea $X_{1},\;X_{2},\;...\;,X_{n}$ una muestra aleatoria de una población normal con varianza $\sigma^2$ y supóngase que se desea probar la hipótesis de que $\sigma^2$ es igual a un valor de referencia $\sigma_{0}^2$, es decir, la hipótesis nula a estudiar es $H_{0}\;:\;\sigma^2\;=\;\sigma_{0}^2$. En este problema las sospechas sobre la varianza $\sigma^2$ se resumen por medio de la hipótesis alterna $(H_{a})$ en una de tres situaciones como se muestra a continuación:  
+
+* $H_{a}\;:\;\sigma^2\;<\;\sigma_{0}^2$,
+* $H_{a}\;:\;\sigma^2\;\neq\;\sigma_{0}^2$,
+* $H_{a}\;:\;\sigma^2\;>\;\sigma_{0}^2$,  
+
+El estadístico para realizar la prueba es:
+
+$$X_{0}^2 = \dfrac{(n-1)S^2}{\sigma_{0}^2}$$,
+
+donde $S$ corresponde a la desviación estándar muestral. Bajo la suposición de que $H_{0}$ es verdadera, el estadístico $X_{0}^2$ tiene distribución $\chi^2$ con $n-1$ grados de libertad.  
+
+Si el valor calculado para el estadístico dado en la ecuación anterior se denota por $\chi_{0}^2$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna $H_{a}$ así:  
+
+
+* Si $H_{a}\;:\;\sigma^2\;<\;\sigma_{0}^2$ entonces valor-$P$ = $P(\chi_{n-1}^2\;<\;\chi_{0}^2)$.  
+* Si $H_{a}\;:\;\sigma^2\;\neq\;\sigma_{0}^2$ entonces valor-$P$ = 2 x min{$P(\chi_{n-1}^2\;<\;\chi_{0}^2),\;P(\chi_{n-1}^2\;>\;\chi_{0}^2)$}.  
+* Si $H_{a}\;:\;\sigma^2\;>\;\sigma_{0}^2$ entonces valor-$P$ = $P(\chi_{n-1}^2\;>\;\chi_{0}^2)$.  
+
+

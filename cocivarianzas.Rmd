@@ -1,0 +1,28 @@
+---
+title: "Prueba de hipótesis para el cociente de varianzas "
+output: html_document
+---
+Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:  
+
+* $n_{1}$ observaciones $X_{11},X_{12},...,X_{1,n_{1}}$ de una poblacion I con varianza $\sigma_{1}^2$,  
+* $n_{2}$ observaciones $X_{21},X_{22},...,X_{2,n_{2}}$ de una poblacion II con varianza $\sigma_{2}^2$,  
+* ambas muestras son independientes entre sí.  
+
+En este problema se desea estudiar la hipótesis nula $H_{0}:\sigma_{1}^2/\sigma_{2}^2=1$ de igualdad de varianzas y se sospecha que el cociente de varianzas podría estar en alguna de las siguientes situaciones:  
+
+* $H_{a}\;:\;\sigma_{1}^2/\sigma_{2}^2\;<\;1$  
+* $H_{a}\;:\;\sigma_{1}^2/\sigma_{2}^2\; \neq \;1$  
+* $H_{a}\;:\;\sigma_{1}^2/\sigma_{2}^2\;>\;1$  
+
+El estadístico para realizar la prueba es:  
+
+$$F_{0}=\dfrac{S_{1}^2}{S_{1}^2},$$
+donde $S_{1}^2$ y $S_{2}^2$ son las varianzas de las muestras I y II respectivamente. El estadístico $F_{0}$, bajo la suposicion de que $H_{0}$ es verdadera, tiene distribución $f$ con $n_{1}-1$ grados de libertad en el numerador y $n_{2}-1$ grados de libertad en el denominador.  
+
+Si el valor calculado para el estadístico dado en la ecuación anterior se denora por $f_{0}$, entonces el vapor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna $H_{a}$ así:  
+
+* Si $H_{a} : \sigma_{1}^2/\sigma_{2}^2 < \sigma_{0}^2$ entonces valor-$P$ = P$(f_{n_{1}-1,n_{2}-1} < f_{0})$. 
+* Si $H_{a} : \sigma_{1}^2/\sigma_{2}^2 \neq \sigma_{0}^2$ entonces valor-$P$ = 2 x min{P$(f_{n_{1}-1,n_{2}-1} < f_{0})$, P$(f_{n_{1}-1,n_{2}-1} > f_{0})$}.  
+* Si $H_{a} : \sigma_{1}^2/\sigma_{2}^2 > \sigma_{0}^2$ entonces valor-$P$ = P$(f_{n_{1}-1,n_{2}-1} > f_{0})$.  
+
+En esta prueba, al no rechazar la hipótesis nula $H_{0}$, se concluye que $\sigma_{1}^2/\sigma_{2}^2=1$ lo que implica en términos prácticos que $\sigma_{1}^2=\sigma_{2}^2$, es decir que las varianzas poblacionales se pueden considerar iguales.

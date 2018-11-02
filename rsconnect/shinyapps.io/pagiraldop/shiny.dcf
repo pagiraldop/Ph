@@ -1,0 +1,12 @@
+name: shiny
+title: shiny
+username:
+account: pagiraldop
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 364078
+bundleId: 1670017
+url: https://pagiraldop.shinyapps.io/shiny/
+when: 1540829682.59344
+asMultiple: FALSE
+asStatic: FALSE
